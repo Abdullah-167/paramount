@@ -15,7 +15,7 @@ const Choose = () => {
 
             {/* Subheading */}
             <p className="text-lg md:text-xl text-black mb-8 max-w-2xl">
-              We're not middlemen we're sourcing partners focused on results.
+             {` We're not middlemen we're sourcing partners focused on results.`}
             </p>
 
             {/* Bullet Points */}

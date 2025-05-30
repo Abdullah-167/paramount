@@ -46,8 +46,8 @@ const Process = () => {
 
           {/* Subheading */}
           <p className="text-lg text-gray-600 mb-12 max-w-3xl mx-auto">
-            Here's how we simplify sourcing between buyers and trusted textile
-            manufacturers.
+            {`Here's how we simplify sourcing between buyers and trusted textile
+            manufacturers.`}
           </p>
 
           {/* Process Container */}
