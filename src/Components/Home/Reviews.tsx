@@ -69,7 +69,7 @@ const Reviews = () => {
               >
                 <div className="h-full flex flex-col">
                   <p className="text-lg text-gray-700 mb-6 flex-grow">
-                  {`  "{testimonial.quote}"`}
+                  {testimonial.quote}
                   </p>
                   <p className="font-semibold text-black mt-auto">
                     {testimonial.author}
