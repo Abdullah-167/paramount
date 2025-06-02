@@ -21,7 +21,7 @@ const Navbar = () => {
           <div className="flex items-center">
             <Link href={"/"}>
               <Image
-                src={"/images/logo.png"}
+                src={"/logo.png"}
                 alt={"paramount-logo"}
                 className="max-h-[60px] object-cover cursor-pointer"
                 width={150}

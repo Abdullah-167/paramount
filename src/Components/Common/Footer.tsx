@@ -13,7 +13,7 @@ const Footer = () => {
           <div className="flex-1">
             <Link href={"/"}>
               <Image
-                src={"/images/logo.png"}
+                src={"/logo.png"}
                 alt={"paramount-logo"}
                 className="max-h-[60px] object-cover cursor-pointer"
                 width={150}
