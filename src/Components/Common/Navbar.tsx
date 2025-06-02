@@ -8,6 +8,11 @@ import { FiMenu, FiX } from "react-icons/fi";
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
+  // Handler to close mobile menu when a link is clicked
+  const handleLinkClick = () => {
+    setIsOpen(false);
+  };
+
   return (
     <nav className="bg-[#F0EFEB] relative py-4">
       <Container>
@@ -77,30 +82,33 @@ const Navbar = () => {
         <div
           className={`bg-[#F0EFEB] z-[100] w-full left-0 absolute top-[80px] transition-all duration-500 overflow-hidden ${
             isOpen
-              ? "h-[250px]  pointer-events-auto"
-              : "h-0  pointer-events-none"
+              ? "h-[250px] pointer-events-auto"
+              : "h-0 pointer-events-none"
           }`}
         >
           <div className="flex flex-col space-y-4 p-5">
             <Link
               href="/industries"
               className="text-gray-800 hover:text-gray-600 font-medium"
+              onClick={handleLinkClick}
             >
               Industries We Serve
             </Link>
             <Link
               href="/services"
               className="text-gray-800 hover:text-gray-600 font-medium"
+              onClick={handleLinkClick}
             >
               Services
             </Link>
             <Link
               href="/about-us"
               className="text-gray-800 hover:text-gray-600 font-medium"
+              onClick={handleLinkClick}
             >
               About Us
             </Link>
-            <Link href={"/contact"}>
+            <Link href={"/contact"} onClick={handleLinkClick}>
               <button className="bg-[#f5DFCB] hover:bg-[#e8d1b9] text-gray-800 font-medium py-2 px-4 rounded-full transition duration-300">
                 Contact Us
               </button>
