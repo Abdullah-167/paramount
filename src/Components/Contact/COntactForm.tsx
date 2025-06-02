@@ -5,16 +5,6 @@ import Container from "../../Components/Common/Container";
 
 const PARTICLE_COUNT = 12;
 
-const generateParticles = () => {
-  return Array.from({ length: PARTICLE_COUNT }, (_, i) => ({
-    id: i,
-    angle: Math.random() * 2 * Math.PI,
-    distance: 80 + Math.random() * 20,
-    size: 4 + Math.random() * 3,
-    delay: i * 0.03,
-  }));
-};
-
 const buttonVariants = {
   idle: {
     width: "100%",
