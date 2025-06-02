@@ -43,25 +43,19 @@ const Navbar = () => {
           <div className="hidden md:flex items-center justify-center flex-1 mx-8">
             <div className="flex space-x-8">
               <Link
-                href="#"
+                href="/industries"
                 className="text-gray-800 hover:text-gray-600 font-medium"
               >
                 Industries We Serve
               </Link>
               <Link
-                href="/software-dev"
+                href="/services"
                 className="text-gray-800 hover:text-gray-600 font-medium"
               >
                 Services
               </Link>
               <Link
-                href="#"
-                className="text-gray-800 hover:text-gray-600 font-medium"
-              >
-                Partners
-              </Link>
-              <Link
-                href="#"
+                href="/about-us"
                 className="text-gray-800 hover:text-gray-600 font-medium"
               >
                 About Us
@@ -71,9 +65,11 @@ const Navbar = () => {
 
           {/* Button on the right */}
           <div className="hidden md:block">
-            <button className="bg-[#f5DFCB] hover:bg-[#e8d1b9] cursor-pointer text-gray-800 font-medium py-2 px-6 rounded-full transition duration-300">
-              Contact Us
-            </button>
+            <Link href={"/contact"}>
+              <button className="bg-[#f5DFCB] hover:bg-[#e8d1b9] cursor-pointer text-gray-800 font-medium py-2 px-6 rounded-full transition duration-300">
+                Contact Us
+              </button>
+            </Link>
           </div>
         </div>
 
@@ -87,32 +83,28 @@ const Navbar = () => {
         >
           <div className="flex flex-col space-y-4 p-5">
             <Link
-              href="#"
+              href="/industries"
               className="text-gray-800 hover:text-gray-600 font-medium"
             >
               Industries We Serve
             </Link>
             <Link
-              href="/software-dev"
+              href="/services"
               className="text-gray-800 hover:text-gray-600 font-medium"
             >
               Services
             </Link>
             <Link
-              href="#"
-              className="text-gray-800 hover:text-gray-600 font-medium"
-            >
-              Partners
-            </Link>
-            <Link
-              href="#"
+              href="/about-us"
               className="text-gray-800 hover:text-gray-600 font-medium"
             >
               About Us
             </Link>
-            <button className="bg-[#f5DFCB] hover:bg-[#e8d1b9] text-gray-800 font-medium py-2 px-4 rounded-full transition duration-300">
-              Contact Us
-            </button>
+            <Link href={"/contact"}>
+              <button className="bg-[#f5DFCB] hover:bg-[#e8d1b9] text-gray-800 font-medium py-2 px-4 rounded-full transition duration-300">
+                Contact Us
+              </button>
+            </Link>
           </div>
         </div>
       </Container>

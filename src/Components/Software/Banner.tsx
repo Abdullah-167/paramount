@@ -1,5 +1,6 @@
 import React from "react";
 import Container from "../Common/Container";
+import Link from "next/link";
 
 const Banner = () => {
   return (
@@ -14,12 +15,11 @@ const Banner = () => {
             help you move fast and build smart.
           </p>
           <div className="flex justify-center gap-4">
-            <button className=" cursor-pointer bg-[#F5DFCB] text-black px-5 sm:px-6 py-3 rounded-4xl font-medium hover:bg-[#e9cdae] transition">
-              Book a Call
-            </button>
-            <button className=" cursor-pointer bg-[#F5DFCB] text-black px-5 sm:px-6 py-3 rounded-4xl font-medium hover:bg-[#e9cdae] transition">
-              Send an Inquiry
-            </button>
+            <Link href={"/contact"}>
+              <button className=" cursor-pointer bg-[#F5DFCB] text-black px-5 sm:px-6 py-3 rounded-4xl font-medium hover:bg-[#e9cdae] transition">
+                Send an Inquiry
+              </button>
+            </Link>
           </div>
         </div>
       </Container>

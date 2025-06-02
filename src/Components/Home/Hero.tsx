@@ -1,5 +1,6 @@
 import React from "react";
 import Container from "../Common/Container";
+import Link from "next/link";
 
 const Hero = () => {
   return (
@@ -24,9 +25,11 @@ const Hero = () => {
           </p>
 
           {/* Button */}
-          <button className="bg-[#F5DFCB] hover:bg-[#e8d1b9] text-black font-medium py-3 px-8 rounded-full text-lg transition duration-300">
-            Get In Touch
-          </button>
+          <Link href={"/contact"}>
+            <button className="bg-[#F5DFCB] hover:bg-[#e8d1b9] text-black font-medium py-3 px-8 rounded-full text-lg transition duration-300">
+              Get In Touch
+            </button>
+          </Link>
         </div>
       </Container>
     </div>

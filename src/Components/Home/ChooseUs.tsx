@@ -1,6 +1,7 @@
 import Image from "next/image";
 import React from "react";
 import Container from "../Common/Container";
+import Link from "next/link";
 
 const Choose = () => {
   return (
@@ -15,7 +16,7 @@ const Choose = () => {
 
             {/* Subheading */}
             <p className="text-lg md:text-xl text-black mb-8 max-w-2xl">
-             {` We're not middlemen we're sourcing partners focused on results.`}
+              {` We're not middlemen we're sourcing partners focused on results.`}
             </p>
 
             {/* Bullet Points */}
@@ -41,9 +42,11 @@ const Choose = () => {
             </ul>
 
             {/* Button */}
-            <button className="cursor-pointer bg-[#D0B095] hover:bg-[#c4a286] text-black font-medium py-3 px-8 rounded-full text-lg transition duration-300">
-              Get Started
-            </button>
+            <Link href={"/contact"}>
+              <button className="cursor-pointer bg-[#D0B095] hover:bg-[#c4a286] text-black font-medium py-3 px-8 rounded-full text-lg transition duration-300">
+                Get Started
+              </button>
+            </Link>
           </div>
           <div>
             <Image
