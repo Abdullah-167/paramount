@@ -2,8 +2,10 @@ import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 
 // Email settings - use environment variables in production
-const hostingerEmail = process.env.HOSTINGER_EMAIL || "info@paramountsolutions.online";
-const hostingerPassword = process.env.HOSTINGER_PASSWORD || "Paramountsolutions@bilal1";
+const hostingerEmail =
+  process.env.HOSTINGER_EMAIL || "info@paramountsolutions.online";
+const hostingerPassword =
+  process.env.HOSTINGER_PASSWORD || "Paramountsolutions@bilal1";
 
 export async function POST(req: Request) {
   try {
@@ -97,13 +99,20 @@ export async function POST(req: Request) {
       success: true,
       message: "Form submitted successfully!",
     });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("Email Error:", error);
+
+    let message = "Unknown error";
+
+    if (error instanceof Error) {
+      message = error.message;
+    }
+
     return NextResponse.json(
       {
         success: false,
         message: "Error sending email",
-        error: error.message,
+        error: message,
       },
       { status: 500 }
     );

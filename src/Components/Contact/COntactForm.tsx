@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { motion, AnimatePresence, useAnimationControls } from "framer-motion";
+import { motion, useAnimationControls } from "framer-motion";
 import Container from "../../Components/Common/Container";
 
 const PARTICLE_COUNT = 12;
@@ -46,7 +46,6 @@ const ContactForm = () => {
   >("idle");
   const [error, setError] = useState("");
   const controls = useAnimationControls();
-  const particles = generateParticles();
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -84,8 +83,12 @@ const ContactForm = () => {
       setTimeout(() => {
         window.location.reload();
       }, 5000);
-    } catch (err: any) {
-      setError(err.message || "Something went wrong. Please try again later.");
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error
+          ? err.message
+          : "Something went wrong. Please try again later.";
+      setError(errorMessage);
       setStatus("idle");
       await controls.start("reset");
     }
@@ -99,8 +102,7 @@ const ContactForm = () => {
             Get In Touch
           </h2>
           <p className="text-[#6B5340] mb-10 text-lg leading-relaxed">
-            We'd love to hear from you. Drop us a message and we’ll respond
-            shortly.
+            {`We&apos;d love to hear from you. Drop us a message and we’ll respond shortly.`}
           </p>
 
           {error && (
@@ -112,7 +114,7 @@ const ContactForm = () => {
           {status === "success" ? (
             <div className="text-center text-[#4F3E2A] text-xl font-semibold p-6 bg-green-50 border border-green-200 rounded-xl shadow">
               🎉 Thank you for reaching out! <br /> Your message has been
-              successfully sent. We’ll get back to you soon.
+              successfully sent. We&apos;ll get back to you soon.
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-8">

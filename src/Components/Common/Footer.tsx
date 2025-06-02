@@ -1,5 +1,4 @@
 import React from "react";
-import { FaFacebookF, FaInstagram, FaLinkedinIn } from "react-icons/fa";
 import Container from "./Container";
 import Link from "next/link";
 import Image from "next/image";
