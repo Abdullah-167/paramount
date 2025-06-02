@@ -3,8 +3,6 @@ import React, { useState } from "react";
 import { motion, useAnimationControls } from "framer-motion";
 import Container from "../../Components/Common/Container";
 
-const PARTICLE_COUNT = 12;
-
 const buttonVariants = {
   idle: {
     width: "100%",
