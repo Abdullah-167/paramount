@@ -1,17 +1,14 @@
 import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 
-// Email settings - use environment variables in production
-const hostingerEmail =
-  process.env.HOSTINGER_EMAIL || "info@paramountsolutions.online";
-const hostingerPassword =
-  process.env.HOSTINGER_PASSWORD || "Paramountsolutions@bilal1";
+// Load environment variables
+const hostingerEmail = process.env.HOSTINGER_EMAIL!;
+const hostingerPassword = process.env.HOSTINGER_PASSWORD!;
 
 export async function POST(req: Request) {
   try {
     const { name, email, phone, message } = await req.json();
 
-    // Basic validation
     if (!name || !email || !phone || !message) {
       return NextResponse.json(
         {
@@ -22,7 +19,6 @@ export async function POST(req: Request) {
       );
     }
 
-    // Nodemailer transporter for Hostinger
     const transporter = nodemailer.createTransport({
       host: "smtp.hostinger.com",
       port: 465,
@@ -36,7 +32,7 @@ export async function POST(req: Request) {
       },
     });
 
-    // Admin email (organized layout)
+    // Admin notification email
     await transporter.sendMail({
       from: `"Paramount Solutions" <${hostingerEmail}>`,
       to: hostingerEmail,
@@ -45,31 +41,17 @@ export async function POST(req: Request) {
         <div style="max-width: 600px; margin: auto; font-family: Arial, sans-serif; padding: 20px; background-color: #f7f7f7; border-radius: 10px; border: 1px solid #ddd;">
           <h2 style="color: #333; text-align: center;">🚀 New Contact Form Submission</h2>
           <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
-            <tr>
-              <td style="padding: 10px; font-weight: bold; background-color: #f0f0f0;">👤 Name:</td>
-              <td style="padding: 10px; background-color: #fff;">${name}</td>
-            </tr>
-            <tr>
-              <td style="padding: 10px; font-weight: bold; background-color: #f0f0f0;">📧 Email:</td>
-              <td style="padding: 10px; background-color: #fff;">${email}</td>
-            </tr>
-            <tr>
-              <td style="padding: 10px; font-weight: bold; background-color: #f0f0f0;">📞 Phone:</td>
-              <td style="padding: 10px; background-color: #fff;">${phone}</td>
-            </tr>
-            <tr>
-              <td style="padding: 10px; font-weight: bold; background-color: #f0f0f0;">💬 Message:</td>
-              <td style="padding: 10px; background-color: #fff; white-space: pre-line;">${message}</td>
-            </tr>
+            <tr><td style="padding: 10px; font-weight: bold;">👤 Name:</td><td>${name}</td></tr>
+            <tr><td style="padding: 10px; font-weight: bold;">📧 Email:</td><td>${email}</td></tr>
+            <tr><td style="padding: 10px; font-weight: bold;">📞 Phone:</td><td>${phone}</td></tr>
+            <tr><td style="padding: 10px; font-weight: bold;">💬 Message:</td><td style="white-space: pre-line;">${message}</td></tr>
           </table>
-          <p style="margin-top: 30px; font-size: 12px; color: #888; text-align: center;">
-            You received this message from the Paramount Solutions website contact form.
-          </p>
+          <p style="margin-top: 30px; font-size: 12px; color: #888; text-align: center;">You received this message from the Paramount Solutions website contact form.</p>
         </div>
       `,
     });
 
-    // Thank you email to the user
+    // Thank-you email to the user
     await transporter.sendMail({
       from: `"Paramount Solutions" <${hostingerEmail}>`,
       to: email,
@@ -102,17 +84,11 @@ export async function POST(req: Request) {
   } catch (error: unknown) {
     console.error("Email Error:", error);
 
-    let message = "Unknown error";
-
-    if (error instanceof Error) {
-      message = error.message;
-    }
-
     return NextResponse.json(
       {
         success: false,
         message: "Error sending email",
-        error: message,
+        error: error instanceof Error ? error.message : "Unknown error",
       },
       { status: 500 }
     );

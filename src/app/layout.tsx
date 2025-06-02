@@ -12,7 +12,6 @@ export const metadata = {
     apple: "/favicon.png",
   },
 };
-
 export default function RootLayout({
   children,
 }: Readonly<{
